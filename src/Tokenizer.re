@@ -1,5 +1,3 @@
-[@bs.val] [@bs.module "js-tokens"] external jsRegex : Js.Re.t = "default";
-
 let mapToString = (strOption) =>
   switch strOption {
   | None => ""
@@ -7,12 +5,7 @@ let mapToString = (strOption) =>
   };
 
 let run = (code) =>
-  switch (Js.Re.exec(code, jsRegex)) {
+  switch (Js.String.match(JsTokens.re, code)) {
   | None => []
-  | Some(result) =>
-    result
-    |> Js.Re.captures
-    |> Array.to_list
-    |> List.map(Js.Nullable.to_opt)
-    |> List.map((_) => "")
+  | Some(result) => result |> Array.to_list
   };
