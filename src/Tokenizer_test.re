@@ -14,3 +14,11 @@ describe(
     test(name(test_2), () => expect(run(test_2)) == ["console", ".", "log", "(", "5", ")"])
   }
 );
+
+describe("mapToString",() => {
+  open Expect;
+  open! Expect.Operators;
+
+  test("Removing Some variant", () => expect(mapVariantToString(Some("test"))) == "test");
+  test("Casting None variant", () => expect(mapVariantToString(None)) == "");
+});

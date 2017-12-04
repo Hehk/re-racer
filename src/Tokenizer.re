@@ -1,4 +1,4 @@
-let mapToString = (strOption) =>
+let mapVariantToString = (strOption) =>
   switch strOption {
   | None => ""
   | Some(str) => str
